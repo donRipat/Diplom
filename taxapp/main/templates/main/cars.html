@@ -4,7 +4,29 @@
 <div>
 
     <div>Добавить новый автомобиль:</div>
-    <
+    <div class="form-group">
+        <div class="flex-column col-md-3">
+            <small id="modelHelp" class="form-text text-black">Марка, модель, цвет</small>
+            <input type="email" class="form-control mb-2" id="model" aria-describedby="emailHelp"
+                   placeholder="Белый Renault Logan">
+
+            <small id="plateHelp" class="form-text text-black">Регистрационный номер</small>
+            <input type="email" class="form-control mb-2" id="plate" aria-describedby="emailHelp"
+                   placeholder="E000EE 999 RUS">
+        </div>
+        <small id="sitsHelp" class="form-text text-black">Количество сидений</small>
+        <div class="d-flex">
+            <div class="col-md-1 mb-3">
+                <input type="number" name="sits" value="5" class="form-control" min="2" max="9"
+                       required="" id="id_sits">
+            </div>
+            <div class="">
+                <button type="button" class="btn btn-primary justify-content-end">Добавить</button>
+            </div>
+        </div>
+        <div class="d-flex">
+        </div>
+    </div>
 
     <div>Автопарк:</div>
     {% for car in cars %}

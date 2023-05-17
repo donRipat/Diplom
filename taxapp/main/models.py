@@ -100,7 +100,7 @@ class Driver(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = 'Сотрудники'
+        verbose_name_plural = 'Водители'
 
 
 class Car(models.Model):
