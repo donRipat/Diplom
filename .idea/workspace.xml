@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17e0f019-d199-4eba-8e32-04fb3f8ab23b" name="Changes" comment="commit">
+    <list default="true" id="17e0f019-d199-4eba-8e32-04fb3f8ab23b" name="Changes" comment="small additions">
+      <change afterPath="$PROJECT_DIR$/taxapp/main/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taxapp/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/static/main/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/static/main/bootstrap.min.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/taxapp/main/static/main/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/static/main/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/templates/main/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/cars.html" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/templates/main/cars.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/cities.html" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/templates/main/cities.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/employees.html" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/templates/main/employees.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/routes.html" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/templates/main/routes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/views/cars.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/views/cars.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/views/cities.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/views/cities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/views/employees.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/views/employees.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/views/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/views/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +64,7 @@
       <recent name="C:\web_app\taxapp\main\static\main" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.manage">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="web_app" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -65,7 +78,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/taxapp/main.py" />
-      <option name="PARAMETERS" value="runserver" />
+      <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -73,7 +86,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="web_app" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -86,7 +99,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/taxapp/manage.py" />
-      <option name="PARAMETERS" value="runserver" />
+      <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -98,11 +111,6 @@
       <item itemvalue="Python.main" />
       <item itemvalue="Python.manage" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.manage" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -127,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684014504346</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="small additions">
+      <created>1684353155253</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1684353155254</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,6 +159,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="models + base base template based B^!" />
-    <option name="LAST_COMMIT_MESSAGE" value="models + base base template based B^!" />
+    <MESSAGE value="small additions" />
+    <option name="LAST_COMMIT_MESSAGE" value="small additions" />
   </component>
 </project>

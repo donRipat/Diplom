@@ -3,12 +3,13 @@
 {% block content %}
 <div>
 
-    <div>Добавить новый автомобиль:</div>
-    <div class="form-group">
-        <div class="flex-column col-md-3">
+    <div>Новый автомобиль:</div>
+    <form method="post" action="car/add" class="my-2">
+        {% csrf_token %}
+        {{ form }}
+        <!--div class="flex-column col-md-3">
             <small id="modelHelp" class="form-text text-black">Марка, модель, цвет</small>
-            <input type="email" class="form-control mb-2" id="model" aria-describedby="emailHelp"
-                   placeholder="Белый Renault Logan">
+            <input type="text" class="form-control mb-2" id="model" placeholder="Белый Renault Logan">
 
             <small id="plateHelp" class="form-text text-black">Регистрационный номер</small>
             <input type="email" class="form-control mb-2" id="plate" aria-describedby="emailHelp"
@@ -19,19 +20,50 @@
             <div class="col-md-1 mb-3">
                 <input type="number" name="sits" value="5" class="form-control" min="2" max="9"
                        required="" id="id_sits">
-            </div>
+            </div-->
             <div class="">
-                <button type="button" class="btn btn-primary justify-content-end">Добавить</button>
+                <input type="submit"  value='Добавить'
+                       class="btn btn-primary mt-3 justify-content-end"/>
             </div>
-        </div>
-        <div class="d-flex">
-        </div>
-    </div>
+        <!--/div>
+        <div-- class="d-flex">
+        </div-->
+    </form>
 
-    <div>Автопарк:</div>
-    {% for car in cars %}
-        <p>{{ car }}</p>
-    {% endfor %}
+    <table class="table table-sm table-hover" width="50%">
+        <thead>
+        <tr>
+            <th class="" width="20%">
+                Автомобиль
+            </th>
+            <th class="" width="15%">
+                Номер
+            </th>
+            <th class="" width="7%">
+                Места
+            </th>
+            <th class="">
+
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for car in cars %}
+                <tr>
+                    <td>{{ car.model }}</td>
+                    <td>{{ car.plate }}</td>
+                    <td>{{ car.sits }}</td>
+                    <td>
+                        <form method="post" action="car/delete/{{car.id}}" class="">
+                            {% csrf_token %}
+                            <input type="submit"  value='Удалить'
+                                   class="btn btn-sm btn-outline-danger justify-content-end"/>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 </div>
 {% endblock %}

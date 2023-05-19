@@ -1,5 +1,68 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
+<div>
 
+    <div>Новый населенный пункт:</div>
+    <form method="post" action="city/add" class="my-2">
+        {% csrf_token %}
+        {{ form }}
+            <div class="">
+                <input type="submit"  value='Добавить'
+                       class="btn btn-primary mt-3 justify-content-end"/>
+            </div>
+    </form>
+
+    <table class="table table-sm table-hover" width="50%">
+        <thead>
+        <tr>
+            <th class="" width="15%">
+                Название
+            </th>
+            <th class="" width="10%">
+                Привязка
+            </th>
+            <th class="" width="10%">
+                Время до Уфы
+            </th>
+            <th class="" width="10%">
+                Время до привязки
+            </th>
+            <th class="" width="10%">
+                Расстояние до Уфы
+            </th>
+            <th class="" width="10%">
+                Расстояние до привязки
+            </th>
+            <th class="" width="10%">
+                Добавка к цене
+            </th>
+            <th class="">
+
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for city in cities %}
+                <tr>
+                    <td>{{ city.name }}</td>
+                    <td>{{ city.parent_city_id }}</td>
+                    <td>{{ city.est_time_ufa }}</td>
+                    <td>{{ city.est_time_addition }}</td>
+                    <td>{{ city.dist_ufa }}</td>
+                    <td>{{ city.dist_parent }}</td>
+                    <td>{{ city.price_addition }}</td>
+                    <td>
+                        <form method="post" action="city/delete/{{city.id}}" class="">
+                            {% csrf_token %}
+                            <input type="submit"  value='Удалить'
+                                   class="btn btn-sm btn-outline-danger justify-content-end"/>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
 {% endblock %}

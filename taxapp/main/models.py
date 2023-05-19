@@ -16,7 +16,7 @@ class City(models.Model):
         MinValueValidator(0),
         MaxValueValidator(99)])
     price_addition = models.PositiveIntegerField(default=100, validators=[
-        MinValueValidator(10),
+        MinValueValidator(0),
         MaxValueValidator(999)])
 
     def __str__(self):
@@ -111,7 +111,11 @@ class Car(models.Model):
         MaxValueValidator(9)])
 
     def __str__(self):
-        return self.plate
+        return str({
+            'model': self.model,
+            'plate': self.plate,
+            'sits': self.sits,
+        })
 
     class Meta:
         verbose_name_plural = 'Автомобили'

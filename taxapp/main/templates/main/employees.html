@@ -1,5 +1,48 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
+<div>
 
+    <div>Новый водитель:</div>
+    <form method="post" action="employee/add" class="my-2">
+        {% csrf_token %}
+        {{ form }}
+            <div class="">
+                <input type="submit"  value='Добавить'
+                       class="btn btn-primary mt-3 justify-content-end"/>
+            </div>
+    </form>
+
+    <table class="table table-sm table-hover" width="50%">
+        <thead>
+        <tr>
+            <th class="" width="25%">
+                Имя
+            </th>
+            <th class="" width="15%">
+                Телефон
+            </th>
+            <th class="">
+
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for driver in drivers %}
+                <tr>
+                    <td>{{ driver.name }}</td>
+                    <td>{{ driver.phone }}</td>
+                    <td>
+                        <form method="post" action="employee/delete/{{driver.id}}" class="">
+                            {% csrf_token %}
+                            <input type="submit"  value='Удалить'
+                                   class="btn btn-sm btn-outline-danger justify-content-end"/>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
 {% endblock %}

@@ -1,5 +1,48 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
+<div>
 
+    <div>Новый маршрут:</div>
+    <form method="post" action="route/add" class="my-2">
+        {% csrf_token %}
+        {{ form }}
+            <div class="">
+                <input type="submit"  value='Добавить'
+                       class="btn btn-primary mt-3 justify-content-end"/>
+            </div>
+    </form>
+
+    <table class="table table-sm table-hover" width="50%">
+        <thead>
+        <tr>
+            <th class="" width="25%">
+                Маршрут
+            </th>
+            <th class="" width="5%">
+                Цена
+            </th>
+            <th class="">
+
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for route in routes %}
+                <tr>
+                    <td>{{ route.start_city.name }} — {{ route.finish_city.name }}</td>
+                    <td>{{ route.price }}</td>
+                    <td>
+                        <form method="post" action="route/delete/{{route.id}}" class="">
+                            {% csrf_token %}
+                            <input type="submit"  value='Удалить'
+                                   class="btn btn-sm btn-outline-danger justify-content-end"/>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
 {% endblock %}
