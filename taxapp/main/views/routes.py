@@ -17,11 +17,12 @@ def routes(request):
 
 def add(request):
     qd = request.POST
-    st = City.objects.filter(id=qd.get('start_id'))[0]
-    fin = City.objects.filter(id=qd.get('finish_id'))[0]
+    print(qd.get('start_area'))
+    st = Area.objects.filter(id=qd.get('start_area'))[0]
+    fin = Area.objects.filter(id=qd.get('finish_area'))[0]
     Route.objects.create(
-        start_city=st,
-        finish_city=fin,
+        start_area=st,
+        finish_area=fin,
         price=qd.get('price'),
     )
     return HttpResponseRedirect("/routes")

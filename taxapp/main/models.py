@@ -4,42 +4,52 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 
 
+class Area(models.Model):
+    name = models.CharField(max_length=50, blank=False, unique=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'Локации маршрута'
+
+
 class City(models.Model):
-    name = models.CharField(max_length=100, blank=True)
-    parent_city_id = models.PositiveIntegerField(default=0)
+    name = models.CharField(max_length=100, blank=False)
+    area = models.ForeignKey(Area, on_delete=models.CASCADE, related_name='cities')
     est_time_ufa = models.DecimalField(max_digits=4, decimal_places=2)
-    est_time_addition = models.DecimalField(max_digits=4, decimal_places=2)
     dist_ufa = models.PositiveIntegerField(default=0, validators=[
         MinValueValidator(0),
         MaxValueValidator(999)])
-    dist_parent = models.PositiveIntegerField(default=0, validators=[
-        MinValueValidator(0),
-        MaxValueValidator(99)])
     price_addition = models.PositiveIntegerField(default=100, validators=[
         MinValueValidator(0),
         MaxValueValidator(999)])
 
     def __str__(self):
-        return self.name
+        return str({
+            'id': self.id,
+            'name': self.name,
+            'area': self.area,
+        })
 
     class Meta:
         verbose_name_plural = 'Города'
 
 
 class Route(models.Model):
-    start_city = models.ForeignKey(City, related_name='starting_routes',
+    start_area = models.ForeignKey(Area, related_name='starting_routes',
                                    on_delete=models.CASCADE)
-    finish_city = models.ForeignKey(City, related_name='finishing_routes',
+    finish_area = models.ForeignKey(Area, related_name='finishing_routes',
                                     on_delete=models.CASCADE)
     price = models.PositiveIntegerField(default=1000, validators=[
         MinValueValidator(100),
         MaxValueValidator(9999)])
 
     def __str__(self):
-        return f'{self.start_city}—{self.finish_city}: ({self.price} руб.)'
+        return f'{self.start_area}—{self.finish_area}: ({self.price} руб.)'
 
     class Meta:
-        unique_together = ('start_city', 'finish_city')
+        unique_together = ('start_area', 'finish_area')
         verbose_name_plural = 'Маршруты'
 
 

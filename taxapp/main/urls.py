@@ -7,6 +7,7 @@ from .views.cars import cars
 from .views.routes import routes
 from .views.cities import cities
 from .views.clients import clients
+from .views.areas import areas
 
 urlpatterns = [
     path('', views.schedule.schedule),
@@ -25,6 +26,10 @@ urlpatterns = [
     path('cities', views.cities.cities),
     path('city/add', views.cities.add),
     path('city/delete/<int:id>', views.cities.delete),
+    
+    path('areas', views.areas.areas),
+    path('area/add', views.areas.add),
+    path('area/delete/<int:id>', views.areas.delete),
     
     path('routes', views.routes.routes),
     path('route/add', views.routes.add),

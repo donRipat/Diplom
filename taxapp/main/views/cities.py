@@ -17,13 +17,12 @@ def cities(request):
 
 def add(request):
     qd = request.POST
+    print(qd.get('area'))
     City.objects.create(
         name=qd.get('name'),
-        parent_city_id=qd.get('parent_city_id'),
+        area=Area.objects.filter(id=qd.get('area'))[0],
         est_time_ufa=qd.get('est_time_ufa'),
-        est_time_addition=qd.get('est_time_addition'),
         dist_ufa=qd.get('dist_ufa'),
-        dist_parent=qd.get('dist_parent'),
         price_addition=qd.get('price_addition')
     )
     return HttpResponseRedirect("/cities")

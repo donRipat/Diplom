@@ -21,14 +21,30 @@ class DriverForm(forms.Form):
         exclude = []
 
 
+areas = Area.objects.all()
+area_ch = []
+for area in areas:
+    area_ch.append((area.id, area.name))
+print(area_ch)
+
+
 class CityForm(forms.Form):
-    name = forms.CharField(label='Название', max_length=100)
-    parent_city_id = forms.IntegerField(label='Привязка', min_value=1)
-    est_time_ufa = forms.DecimalField(label='Время до Уфы', max_digits=4, decimal_places=2)
-    est_time_addition = forms.DecimalField(label='Время до привязки', max_digits=4, decimal_places=2)
-    dist_ufa = forms.IntegerField(label='Расстояние до Уфы', initial=0, min_value=0, max_value=999)
-    dist_parent = forms.IntegerField(label='Расстояние до привязки', initial=0, min_value=0, max_value=99)
-    price_addition = forms.IntegerField(label='Добавка к цене', initial=100, min_value=0, max_value=999)
+    name = forms.CharField(label='Название', max_length=100,
+                           widget=forms.TextInput(attrs={"class": "form-control"}))
+    area = forms.ChoiceField(
+        label='Локация',
+        widget=forms.Select(attrs={
+            "class": "form-control",
+        }),
+        choices=area_ch
+    )
+    est_time_ufa = forms.DecimalField(label='Время до Уфы', max_digits=4, decimal_places=2,
+                                      widget=forms.NumberInput(attrs={"class": "form-control"}))
+    dist_ufa = forms.IntegerField(label='Расстояние до Уфы', initial=0, min_value=0, max_value=999,
+                                  widget=forms.NumberInput(attrs={"class": "form-control"}))
+    price_addition = forms.IntegerField(label='Добавка к цене', initial=100, min_value=0, max_value=999,
+                                        widget=forms.NumberInput(attrs={"class": "form-control"}))
+    required_css_class = 'mt-3'
 
     class Meta:
         model = City
@@ -36,10 +52,44 @@ class CityForm(forms.Form):
 
 
 class RouteForm(forms.Form):
-    start_id = forms.IntegerField(label='id начала', min_value=1)
-    finish_id = forms.IntegerField(label='id конца', min_value=1)
-    price = forms.IntegerField(label='Цена', initial=1000, min_value=100, max_value=9999)
+    start_area = forms.ChoiceField(
+        label='Начало',
+        widget=forms.Select(attrs={
+            "class": "form-control",
+        }),
+        choices=area_ch
+    )
+    finish_area = forms.ChoiceField(
+        label='Конец',
+        widget=forms.Select(attrs={
+            "class": "form-control",
+        }),
+        choices=area_ch
+    )
+    price = forms.IntegerField(
+        label='Цена',
+        initial=1000,
+        min_value=100,
+        max_value=9999,
+        widget=forms.NumberInput(attrs={
+            "class": "form-control",
+        }),)
 
     class Meta:
-        model = Driver
+        model = Route
+        exclude = []
+
+
+class AreaForm(forms.Form):
+    name = forms.CharField(
+        label='Название',
+        max_length=50,
+        widget=forms.NumberInput(attrs={
+            "class": "form-control",
+        }),
+    )
+    required_css_class = 'mt-3'
+
+    class Meta:
+        model = Area
         exclude = []

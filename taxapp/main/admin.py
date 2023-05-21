@@ -14,3 +14,4 @@ admin.site.register(Passenger)
 admin.site.register(City)
 
 admin.site.register(Route)
+admin.site.register(Area)

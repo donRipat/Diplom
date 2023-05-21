@@ -3,8 +3,8 @@
 {% block content %}
 <div>
 
-    <div>Новый населенный пункт:</div>
-    <form method="post" action="city/add" class="mb-2 col-md-5">
+    <div>Новая локация маршрута:</div>
+    <form method="post" action="area/add" class="mb-2 col-md-5">
         {% csrf_token %}
         {{ form }}
         <div class="">
@@ -17,19 +17,7 @@
         <thead>
         <tr>
             <th class="" width="15%">
-                Населенный пункт
-            </th>
-            <th class="" width="10%">
                 Локация
-            </th>
-            <th class="" width="10%">
-                Время до Уфы
-            </th>
-            <th class="" width="10%">
-                Расстояние до Уфы
-            </th>
-            <th class="" width="10%">
-                Добавка к цене
             </th>
             <th class="">
 
@@ -37,15 +25,11 @@
         </tr>
         </thead>
         <tbody>
-            {% for city in cities %}
+            {% for area in areas %}
                 <tr>
-                    <td>{{ city.name }}</td>
-                    <td>{{ city.area.name }}</td>
-                    <td>{{ city.est_time_ufa }}</td>
-                    <td>{{ city.dist_ufa }}</td>
-                    <td>{{ city.price_addition }}</td>
+                    <td>{{ area.name }}</td>
                     <td>
-                        <form method="post" action="city/delete/{{city.id}}" class="">
+                        <form method="post" action="area/delete/{{area.id}}" class="">
                             {% csrf_token %}
                             <input type="submit"  value='Удалить'
                                    class="btn btn-sm btn-outline-danger justify-content-end"/>
