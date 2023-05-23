@@ -8,10 +8,17 @@ from .views.routes import routes
 from .views.cities import cities
 from .views.clients import clients
 from .views.areas import areas
+from .views.test import test
+from .views.choose_route import choose
 
 urlpatterns = [
     path('', views.schedule.schedule),
-    path('schedule', views.schedule.schedule),
+    
+    path('choose-route', views.choose_route.choose),
+    path('route/add-time', views.choose_route.route_edit),
+    # path('route/<int:id>/add-time', views.schedule.add),
+    # path('route/<int:id>/delete-time/<int:id>', views.schedule.delete),
+
     
     path('employees', views.employees.employees),
     path('employee/add', views.employees.add),
@@ -34,4 +41,6 @@ urlpatterns = [
     path('routes', views.routes.routes),
     path('route/add', views.routes.add),
     path('route/delete/<int:id>', views.routes.delete),
+
+    path('test', views.test.test)
 ]

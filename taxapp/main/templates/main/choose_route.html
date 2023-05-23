@@ -4,11 +4,11 @@
 <div>
 
     <div>Новое время для маршрута:</div>
-    <form method="post" action="schedule/add" class="mb-2 col-md-5">
+    <form method="post" action="route/add-time" class="mb-2 col-md-5">
         {% csrf_token %}
         {{ form }}
         <div class="">
-            <input type="submit"  value='Добавить'
+            <input type="submit"  value='Добавить время'
                    class="btn btn-primary mt-3 justify-content-end"/>
         </div>
     </form>

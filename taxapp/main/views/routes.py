@@ -10,19 +10,27 @@ def routes(request):
     dic = {
         'form': form,
         'routes': routes,
-        'title': 'Населенные пункты',
+        'title': 'Маршруты',
     }
     return render(request, 'main/routes.html', dic)
 
 
 def add(request):
     qd = request.POST
-    print(qd.get('start_area'))
+    print("routes.py qd.get('no_reverse_route') = ", qd.get('no_reverse_route'))
+    print('routes.py start_area = ', qd.get('start_area'))
     st = Area.objects.filter(id=qd.get('start_area'))[0]
     fin = Area.objects.filter(id=qd.get('finish_area'))[0]
     Route.objects.create(
         start_area=st,
         finish_area=fin,
+        price=qd.get('price'),
+    )
+    if (qd.get('no_reverse_route')):
+        return HttpResponseRedirect("/routes")
+    Route.objects.create(
+        start_area=fin,
+        finish_area=st,
         price=qd.get('price'),
     )
     return HttpResponseRedirect("/routes")

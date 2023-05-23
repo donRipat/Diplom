@@ -4,7 +4,7 @@
 <div>
 
     <div>Новое время для маршрута:</div>
-    <form method="post" action="schedule/add" class="mb-2 col-md-5">
+    <form method="post" action="route/{{ route.id }}/add-time" class="mb-2 col-md-1">
         {% csrf_token %}
         {{ form }}
         <div class="">
@@ -16,10 +16,7 @@
     <table class="table table-sm table-hover" width="50%">
         <thead>
         <tr>
-            <th class="" width="15%">
-                Маршрут
-            </th>
-            <th class="" width="5%">
+            <th class="" width="25%">
                 Время отправления
             </th>
             <th class="">
@@ -28,10 +25,9 @@
         </tr>
         </thead>
         <tbody>
-            {% for s in schedule %}
+            {% for time in times %}
                 <tr>
-                    <td>{{ s.route.start_area }} — {{ s.route.finish_area }}</td>
-                    <td>{{ s.time }}</td>
+                    <td>{{ time }}</td>
                     <td>
                         <form method="post" action="schedule/delete/{{schedule.id}}" class="">
                             {% csrf_token %}

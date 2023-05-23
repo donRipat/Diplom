@@ -5,7 +5,7 @@ from ..forms import AreaForm
 
 
 def areas(request):
-    areas = Area.objects.all().order_by('-name')
+    areas = Area.objects.all().order_by('name')
     form = AreaForm()
     dic = {
         'form': form,

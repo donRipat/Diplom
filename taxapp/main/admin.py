@@ -3,7 +3,7 @@ from .models import *
 
 # Register your models here.
 
-admin.site.register(Schedule)
+admin.site.register(ScheduledRoute)
 admin.site.register(Car)
 admin.site.register(Driver)
 admin.site.register(Drive)

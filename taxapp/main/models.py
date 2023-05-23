@@ -46,23 +46,23 @@ class Route(models.Model):
         MaxValueValidator(9999)])
 
     def __str__(self):
-        return f'{self.start_area}—{self.finish_area}: ({self.price} руб.)'
+        return f'{self.start_area} — {self.finish_area} ({self.price} руб.)'
 
     class Meta:
         unique_together = ('start_area', 'finish_area')
         verbose_name_plural = 'Маршруты'
 
 
-class Schedule(models.Model):
+class ScheduledRoute(models.Model):
     time = models.TimeField(auto_now=False)
     route = models.ForeignKey(Route, related_name='times',
                               on_delete=models.CASCADE)
 
     def __str__(self):
-        return {
+        return str({
             'route': self.route,
             'time': self.time,
-        }
+        })
 
     class Meta:
         verbose_name_plural = 'Маршруты — время'
@@ -75,28 +75,26 @@ class Booking(models.Model):
                                    on_delete=models.CASCADE)
     finish_city = models.ForeignKey(City, related_name='finishing_bookings',
                                     on_delete=models.CASCADE)
-    route = models.ForeignKey(Route, on_delete=models.PROTECT)
+    scheduled_route = models.ForeignKey(ScheduledRoute, related_name='bookings', on_delete=models.PROTECT)
     total_price = models.PositiveIntegerField(default=1000, validators=[
         MinValueValidator(100),
         MaxValueValidator(9999)])
-    min_time = models.TimeField(auto_now=False)
-    max_time = models.TimeField(auto_now=False)
+    date = models.DateField(auto_now=False)
     start_address = models.CharField(max_length=250, blank=False)
     finish_address = models.CharField(max_length=250, blank=False)
     
     def __str__(self):
-        return {
+        return str({
             'client_phone': self.client_phone,
             'client_name': self.client_name,
             'start_city': self.start_city,
             'finish_city': self.finish_city,
-            'route': self.route,
             'total_price': self.total_price,
-            'min_time': self.min_time,
-            'max_time': self.max_time,
+            'scheduled_route': self.scheduled_route,
+            'date': self.date,
             'start_address': self.start_address,
             'finish_address': self.finish_address,
-        }
+        })
 
     class Meta:
         verbose_name_plural = 'Заказы'
@@ -136,15 +134,17 @@ class Drive(models.Model):
                             on_delete=models.PROTECT)
     driver = models.ForeignKey(Driver, related_name='drives',
                                on_delete=models.CASCADE)
-    scheduled_route = models.ForeignKey(Route, related_name='drives',
+    scheduled_route = models.ForeignKey(ScheduledRoute, related_name='drives',
                                         on_delete=models.CASCADE)
+    date = models.DateField(auto_now=False)
 
     def __str__(self):
-        return {
+        return str({
             'route': self.scheduled_route,
             'driver': self.driver,
             'car': self.car,
-        }
+            'date': self.date,
+        })
 
     class Meta:
         verbose_name_plural = 'Поездки'
@@ -156,10 +156,9 @@ class Passenger(models.Model):
                               on_delete=models.PROTECT)
     booking = models.OneToOneField(Booking, related_name='passenger',
                                    on_delete=models.CASCADE)
-    est_dep_time = models.TimeField(auto_now=False)
 
     def __str__(self):
-        return f'{self.booking} {self.est_dep_time} {self.drive}'
+        return f'{self.drive} {self.booking}'
 
     class Meta:
         verbose_name_plural = 'Пассажиры'
