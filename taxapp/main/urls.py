@@ -5,13 +5,13 @@ from .views.employees import employees
 from .views.cars import cars
 from .views.routes import routes
 from .views.cities import cities
-from .views.clients import clients
+from .views.bookings import bookings
 from .views.areas import areas
 from .views.test import test
 from .views.choose_route import choose
 
 urlpatterns = [
-    path('', views.clients.clients),
+    path('', views.bookings.bookings),
     
     path('choose-route', views.choose_route.choose),
     path('route/<int:id>', views.choose_route.route_edit),
@@ -27,7 +27,9 @@ urlpatterns = [
     path('car/add', views.cars.add),
     path('car/delete/<int:id>', views.cars.delete),
     
-    path('clients', views.clients.clients),
+    path('bookings', views.bookings.bookings),
+    path('booking/add', views.bookings.add),
+    path('booking/delete/<int:id>', views.bookings.delete),
     
     path('cities', views.cities.cities),
     path('city/add', views.cities.add),

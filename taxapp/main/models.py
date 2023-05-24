@@ -17,7 +17,7 @@ class Area(models.Model):
 class City(models.Model):
     name = models.CharField(max_length=100, blank=False)
     area = models.ForeignKey(Area, on_delete=models.CASCADE, related_name='cities')
-    est_time_ufa = models.DecimalField(max_digits=4, decimal_places=2)
+    est_time_ufa = models.TimeField(auto_now=False)
     dist_ufa = models.PositiveIntegerField(default=0, validators=[
         MinValueValidator(0),
         MaxValueValidator(999)])

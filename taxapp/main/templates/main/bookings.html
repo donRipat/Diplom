@@ -1,0 +1,60 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div>
+
+    <div>Новый заказ:</div>
+    <form method="post" action="booking/add" class="mb-2 col-md-5">
+        {% csrf_token %}
+        {{ form }}
+        <div class="">
+            <input type="submit"  value='Добавить'
+                   class="btn btn-primary mt-3 justify-content-end"/>
+        </div>
+    </form>
+
+    <table class="table table-sm table-hover" width="50%">
+        <thead>
+        <tr>
+            <th class="" width="15%">
+                Населенный пункт
+            </th>
+            <th class="" width="10%">
+                Локация
+            </th>
+            <th class="" width="10%">
+                Время до Уфы
+            </th>
+            <th class="" width="10%">
+                Расстояние до Уфы
+            </th>
+            <th class="" width="10%">
+                Добавка к цене
+            </th>
+            <th class="">
+
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.name }}</td>
+                    <td>{{ booking.area.name }}</td>
+                    <td>{{ booking.est_time_ufa }}</td>
+                    <td>{{ booking.dist_ufa }}</td>
+                    <td>{{ booking.price_addition }}</td>
+                    <td>
+                        <form method="post" action="booking/delete/{{booking.id}}" class="">
+                            {% csrf_token %}
+                            <input type="submit"  value='Удалить'
+                                   class="btn btn-sm btn-outline-danger justify-content-end"/>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

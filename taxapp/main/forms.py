@@ -11,6 +11,7 @@ class CarForm(forms.Form):
         max_length=50,
         widget=forms.TextInput(attrs={
             "class": "form-control",
+            'placeholder': 'Белый Renault Logan',
         }),
     )
     plate = forms.CharField(
@@ -18,6 +19,8 @@ class CarForm(forms.Form):
         max_length=15,
         widget=forms.TextInput(attrs={
             "class": "form-control",
+            'data-mask': '',
+            'placeholder': 'X 000 XX 702 rus',
         }),
     )
     sits = forms.IntegerField(
@@ -42,6 +45,7 @@ class DriverForm(forms.Form):
         max_length=100,
         widget=forms.TextInput(attrs={
             "class": "form-control",
+            'placeholder': 'Иванов Иван Иванович',
         }),
     )
     phone = forms.CharField(
@@ -49,6 +53,8 @@ class DriverForm(forms.Form):
         max_length=20,
         widget=forms.TextInput(attrs={
             "class": "form-control",
+            'data-mask': '+0 (000) 000-00-00',
+            'placeholder': '+0 (000) 000-00-00',
         }),
     )
     required_css_class = rcc
@@ -68,12 +74,11 @@ class CityForm(forms.Form):
         }),
         queryset=Area.objects.all().order_by('name')
     )
-    est_time_ufa = forms.DecimalField(
+    est_time_ufa = forms.TimeField(
         label='Время до Уфы',
-        max_digits=4,
-        decimal_places=2,
-        widget=forms.NumberInput(attrs={
-            "class": "form-control"
+        widget=forms.TimeInput(attrs={
+            "class": "form-control",
+            'data-mask': '00:00',
         }),
     )
     dist_ufa = forms.IntegerField(
@@ -134,6 +139,7 @@ class RouteForm(forms.Form):
         required=False,
     )
     required_css_class = rcc
+    css_class = rcc
 
     class Meta:
         model = Route
@@ -173,10 +179,10 @@ class RouteChoosingForm(forms.Form):
 class TimeAddingForm(forms.Form):
     time = forms.TimeField(
         label='Время',
-
         widget=forms.TimeInput(attrs={
             "class": "form-control",
-            'data-mask': '00:00'
+            'data-mask': '00:00',
+            'placeholder': '00:00',
         }),
     )
     required_css_class = rcc
@@ -186,25 +192,72 @@ class TimeAddingForm(forms.Form):
         exclude = []
 
 
-class ScheduleForm(forms.Form):
-    route = forms.ModelChoiceField(
-        label='Маршрут',
+class BookingForm(forms.Form):
+    client_phone = forms.CharField(
+        label='Телефон',
+        max_length=20,
+        widget=forms.TextInput(attrs={
+            "class": "form-control",
+            'data-mask': '+0 (000) 000-00-00',
+            'placeholder': '+0 (000) 000-00-00',
+        })
+    )
+    client_name = forms.CharField(
+        label='Имя',
+        max_length=100,
+        required=False,
+        widget=forms.TextInput(attrs={
+            "class": "form-control",
+            'placeholder': 'Иванов Иван Иванович',
+        }),
+    )
+    start_city = forms.ModelChoiceField(
+        label='Город отправления',
         widget=forms.Select(attrs={
             "class": "form-control",
         }),
-        queryset=Route.objects.all().order_by('start_area')
+        queryset=City.objects.all().values_list('name', flat=True).order_by('name')
     )
-    time = forms.TimeField(
-        label='Время',
-
-        widget=forms.TimeInput(attrs={
+    finish_city = forms.ModelChoiceField(
+        label='Город прибытия',
+        widget=forms.Select(attrs={
             "class": "form-control",
-            # 'type': 'time',
-            'data-mask': '00:00'
+        }),
+        queryset=City.objects.all().values_list('name', flat=True).order_by('name')
+    )
+    date = forms.DateField(
+        label='Дата',
+        widget=forms.DateInput(attrs={
+            "class": "form-control",
+            'data-mask': '00.00.0000',
+            'placeholder': '01.01.2000',
+        }),
+    )
+    scheduled_route = forms.ModelChoiceField(
+        label='Время',
+        widget=forms.Select(attrs={
+            "class": "form-control",
+        }),
+        queryset=ScheduledRoute.objects.all(),
+    )
+    start_address = forms.CharField(
+        label='Адрес отправления',
+        max_length=100,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+        }),
+    )
+    finish_address = forms.CharField(
+        label='Адрес прибытия',
+        max_length=100,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
         }),
     )
     required_css_class = rcc
+    css_class = rcc
+
 
     class Meta:
-        model = ScheduledRoute
+        model = Booking
         exclude = []
