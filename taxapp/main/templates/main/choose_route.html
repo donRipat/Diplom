@@ -3,24 +3,14 @@
 {% block content %}
 <div>
 
-    <div>Новое время для маршрута:</div>
-    <form method="post" action="route/add-time" class="mb-2 col-md-5">
-        {% csrf_token %}
-        {{ form }}
-        <div class="">
-            <input type="submit"  value='Добавить время'
-                   class="btn btn-primary mt-3 justify-content-end"/>
-        </div>
-    </form>
-
     <table class="table table-sm table-hover" width="50%">
         <thead>
         <tr>
             <th class="" width="15%">
                 Маршрут
             </th>
-            <th class="" width="5%">
-                Время отправления
+            <th class="" width="30%">
+                Время выезда
             </th>
             <th class="">
 
@@ -28,15 +18,19 @@
         </tr>
         </thead>
         <tbody>
-            {% for s in schedule %}
+            {% for t in tt %}
                 <tr>
-                    <td>{{ s.route.start_area }} — {{ s.route.finish_area }}</td>
-                    <td>{{ s.time }}</td>
+                    <td>{{ t.0 }}</td>
                     <td>
-                        <form method="post" action="schedule/delete/{{schedule.id}}" class="">
+                        {% for ti in t.1 %}
+                            {{ ti }}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <form method="post" action="route/{{ t.2 }}" class="">
                             {% csrf_token %}
-                            <input type="submit"  value='Удалить'
-                                   class="btn btn-sm btn-outline-danger justify-content-end"/>
+                            <input type="submit"  value='Изменить'
+                                   class="btn btn-outline-primary btn-sm justify-content-end"/>
                         </form>
                     </td>
                 </tr>

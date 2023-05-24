@@ -3,4 +3,4 @@ from ..models import *
 
 
 def clients(request):
-    return render(request, 'main/clients.html', {'title': 'Клиенты'})
+    return render(request, 'main/clients.html', {'title': 'Заказы'})

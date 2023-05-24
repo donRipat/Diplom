@@ -16,7 +16,7 @@
     <table class="table table-sm table-hover" width="50%">
         <thead>
         <tr>
-            <th class="" width="25%">
+            <th class="" width="15%">
                 Время отправления
             </th>
             <th class="">
@@ -27,9 +27,9 @@
         <tbody>
             {% for time in times %}
                 <tr>
-                    <td>{{ time }}</td>
+                    <td>{{ time.time }}</td>
                     <td>
-                        <form method="post" action="schedule/delete/{{schedule.id}}" class="">
+                        <form method="post" action="route/{{ route.id }}/delete-time/{{ time.id }}" class="">
                             {% csrf_token %}
                             <input type="submit"  value='Удалить'
                                    class="btn btn-sm btn-outline-danger justify-content-end"/>

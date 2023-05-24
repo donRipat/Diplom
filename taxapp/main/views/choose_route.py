@@ -5,23 +5,29 @@ from ..forms import *
 
 
 def choose(request):
-    schedule = ScheduledRoute.objects.all().order_by('route')
+    schedule = ScheduledRoute.objects.all()
+    tt = []
+    routes = Route.objects.all().order_by('start_area')
+    for r in routes:
+        times = []
+        for time in r.times.all().order_by('time'):
+            times.append(time.time)
+        tt.append((f"{r.start_area} — {r.finish_area}", times, r.id))
+
     form = RouteChoosingForm()
     dic = {
         'form': form,
         'schedule': schedule,
         'title': 'Расписание',
+        'tt': tt,
     }
     return render(request, 'main/choose_route.html', dic)
 
 
-def route_edit(request):
+def route_edit(request, id: int):
     qd = request.POST
-    print("'choose_route.py' Route.objects.filter(id=qd.get('route'))[0] = ",
-          Route.objects.filter(id=qd.get('route'))[0])
-    route = Route.objects.filter(id=qd.get('route'))[0]
-    print("route.times.all() = ", route.times.all())
-    times = route.times.all()
+    route = Route.objects.filter(id=id)[0]
+    times = route.times.all().order_by('time')
     form = TimeAddingForm()
     dic = {
         'form': form,
@@ -32,7 +38,17 @@ def route_edit(request):
     }
     return render(request, 'main/route_time.html', dic)
 
-#
-# def delete(request, id: int):
-#     ScheduledRoute.objects.filter(id=id)[0].delete()
-#     return HttpResponseRedirect("/schedule")
+
+def add(request, id):
+    qd = request.POST
+    route = Route.objects.filter(id=id)[0]
+    ScheduledRoute.objects.create(
+        route=route,
+        time=qd.get('time')
+    )
+    return HttpResponseRedirect(f"/route/{id}")
+
+
+def delete(request, r_id: int, t_id: int):
+    ScheduledRoute.objects.filter(id=t_id)[0].delete()
+    return HttpResponseRedirect(f"/route/{r_id}")

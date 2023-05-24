@@ -1,39 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17e0f019-d199-4eba-8e32-04fb3f8ab23b" name="Changes" comment="changed models, templates, forms in order to improve database architecture">
-      <change afterPath="$PROJECT_DIR$/taxapp/main/migrations/0009_remove_passenger_est_dep_time_alter_city_name.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taxapp/main/migrations/0010_rename_max_time_booking_time_remove_booking_min_time.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taxapp/main/migrations/0011_rename_schedule_scheduledroute_remove_booking_route_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taxapp/main/migrations/0012_alter_drive_scheduled_route.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taxapp/main/templates/main/choose_route.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taxapp/main/templates/main/route_time.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taxapp/main/templates/main/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taxapp/main/views/test.py" afterDir="false" />
+    <list default="true" id="17e0f019-d199-4eba-8e32-04fb3f8ab23b" name="Changes" comment="something changed don't care + didn't ask &lt;br&gt;schedule routes thing still to be done +_+">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taxapp/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/migrations/0002_alter_car_options_alter_driver_options_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/migrations/0003_city_client_drive_employee_alter_driver_options_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/migrations/0004_booking_alter_driver_options_alter_route_options_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/migrations/0005_alter_driver_options_remove_city_dist_parent_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/migrations/0006_routecity_alter_route_finish_city_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/migrations/0007_alter_routecity_city.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/migrations/0008_area_remove_city_est_time_addition_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/views/choose_route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/templates/main/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/cars.html" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/templates/main/cars.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/employees.html" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/templates/main/employees.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/routes.html" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/templates/main/routes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/schedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/templates/main/schedule.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/choose_route.html" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/templates/main/choose_route.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/route_time.html" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/templates/main/route_time.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/schedule.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/taxapp/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/views/areas.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/views/areas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/views/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/views/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/views/schedule.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/views/schedule.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/taxapp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/taxapp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/views/choose_route.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/views/choose_route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/views/clients.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/views/clients.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/views/schedule.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684670385415</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="something changed don't care + didn't ask &lt;br&gt;schedule routes thing still to be done +_+">
+      <created>1684871357958</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1684871357958</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -191,6 +176,7 @@
     <MESSAGE value="small additions" />
     <MESSAGE value="added: forms, templates and views for showing, adding and deleting cars, drivers, cities and routes - unfinished &lt;br&gt;trivia: + styles seem to be no longer broken (in fact they are but no errors in console :\) + routing + small changes in model and base template + L + ratio + does work + didn't ask" />
     <MESSAGE value="changed models, templates, forms in order to improve database architecture" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed models, templates, forms in order to improve database architecture" />
+    <MESSAGE value="something changed don't care + didn't ask &lt;br&gt;schedule routes thing still to be done +_+" />
+    <option name="LAST_COMMIT_MESSAGE" value="something changed don't care + didn't ask &lt;br&gt;schedule routes thing still to be done +_+" />
   </component>
 </project>

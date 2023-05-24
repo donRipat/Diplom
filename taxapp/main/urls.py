@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
-from .views.schedule import schedule
 from .views.employees import employees
 from .views.cars import cars
 from .views.routes import routes
@@ -12,12 +11,12 @@ from .views.test import test
 from .views.choose_route import choose
 
 urlpatterns = [
-    path('', views.schedule.schedule),
+    path('', views.clients.clients),
     
     path('choose-route', views.choose_route.choose),
-    path('route/add-time', views.choose_route.route_edit),
-    # path('route/<int:id>/add-time', views.schedule.add),
-    # path('route/<int:id>/delete-time/<int:id>', views.schedule.delete),
+    path('route/<int:id>', views.choose_route.route_edit),
+    path('route/<int:id>/add-time', views.choose_route.add),
+    path('route/<int:r_id>/delete-time/<int:t_id>', views.choose_route.delete),
 
     
     path('employees', views.employees.employees),
