@@ -211,14 +211,14 @@ class BookingForm(forms.Form):
         }),
     )
     start_city = forms.ModelChoiceField(
-        label='Город отправления',
+        label='Пункт отправления',
         widget=forms.Select(attrs={
             "class": "form-control",
         }),
         queryset=City.objects.all().order_by('name')
     )
     finish_city = forms.ModelChoiceField(
-        label='Город прибытия',
+        label='Пункт прибытия',
         widget=forms.Select(attrs={
             "class": "form-control",
         }),

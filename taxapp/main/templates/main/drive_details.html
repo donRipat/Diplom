@@ -1,0 +1,49 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div>
+
+    <table class="table table-sm table-hover" width="50%">
+        <thead>
+        <tr>
+            <th class="" width="10%">
+                Пассажир
+            </th>
+            <th class="" width="10%">
+                Адрес отбытия
+            </th>
+            <th class="" width="10%">
+                Адрес назначения
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for p in passengers %}
+                <tr>
+                    <td>{{ p.booking.client_phone }} {{ p.booking.client_name }}</td>
+                    <td>{{ p.booking.start_city.name }}, {{ p.booking.start_address }}</td>
+                    <td>{{ p.booking.finish_city.name }}, {{ p.booking.finish_address }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <table class="table table-sm table-hover" width="50%">
+        <thead>
+        <tr>
+            <th class="" width="10%">
+                Остановки
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for s in stops %}
+                <tr>
+                    <td>{{ s.1 }}, {{ s.2 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

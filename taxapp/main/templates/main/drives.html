@@ -1,0 +1,54 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div>
+
+    <table class="table table-sm table-hover" width="50%">
+        <thead>
+        <tr>
+            <th class="" width="20%">
+                Маршрут
+            </th>
+            <th class="" width="15%">
+                Дата
+            </th>
+            <th class="" width="10%">
+                Время
+            </th>
+            <th class="" width="20%">
+                Водитель
+            </th>
+            <th class="" width="20%">
+                Автомобиль
+            </th>
+            <th class="" width="10%">
+                Количество пассажиров
+            </th>
+            <th class="">
+
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for d in drt %}
+                <tr>
+                    <td>{{ d.0.scheduled_route.route.start_area }} — {{ d.0.scheduled_route.route.finish_area }}</td>
+                    <td>{{ d.0.date }}</td>
+                    <td>{{ d.0.scheduled_route.time }}</td>
+                    <td>{{ d.0.driver }}</td>
+                    <td>{{ d.0.car.model }}</td>
+                    <td>{{ d.1 }}</td>
+                    <td>
+                        <form method="post" action="drive/{{ d.0.id }}" class="">
+                            {% csrf_token %}
+                            <input type="submit"  value='Детали'
+                                   class="btn btn-outline-primary btn-sm justify-content-end"/>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

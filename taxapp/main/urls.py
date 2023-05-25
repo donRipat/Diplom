@@ -9,6 +9,8 @@ from .views.bookings import bookings
 from .views.areas import areas
 from .views.test import test
 from .views.choose_route import choose
+from .views.drives import drives
+from .views.drive_details import drive_details
 
 urlpatterns = [
     path('', views.bookings.bookings),
@@ -42,6 +44,9 @@ urlpatterns = [
     path('routes', views.routes.routes),
     path('route/add', views.routes.add),
     path('route/delete/<int:id>', views.routes.delete),
+    
+    path('drives', views.drives.drives),
+    path('drive/<int:id>', views.drive_details.drive_details),
 
     path('test', views.test.test)
 ]
