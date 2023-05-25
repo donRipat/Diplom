@@ -19,8 +19,7 @@ class CarForm(forms.Form):
         max_length=15,
         widget=forms.TextInput(attrs={
             "class": "form-control",
-            'data-mask': '',
-            'placeholder': 'X 000 XX 702 rus',
+            'placeholder': 'X000XX 702 rus',
         }),
     )
     sits = forms.IntegerField(
@@ -216,14 +215,14 @@ class BookingForm(forms.Form):
         widget=forms.Select(attrs={
             "class": "form-control",
         }),
-        queryset=City.objects.all().values_list('name', flat=True).order_by('name')
+        queryset=City.objects.all().order_by('name')
     )
     finish_city = forms.ModelChoiceField(
         label='Город прибытия',
         widget=forms.Select(attrs={
             "class": "form-control",
         }),
-        queryset=City.objects.all().values_list('name', flat=True).order_by('name')
+        queryset=City.objects.all().order_by('name')
     )
     date = forms.DateField(
         label='Дата',

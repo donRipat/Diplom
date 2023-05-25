@@ -17,19 +17,16 @@
         <thead>
         <tr>
             <th class="" width="15%">
-                Населенный пункт
+                Клиент
+            </th>
+            <th class="" width="20%">
+                Маршрут
+            </th>
+            <th class="" width="15%">
+                Дата
             </th>
             <th class="" width="10%">
-                Локация
-            </th>
-            <th class="" width="10%">
-                Время до Уфы
-            </th>
-            <th class="" width="10%">
-                Расстояние до Уфы
-            </th>
-            <th class="" width="10%">
-                Добавка к цене
+                Время
             </th>
             <th class="">
 
@@ -39,11 +36,14 @@
         <tbody>
             {% for booking in bookings %}
                 <tr>
-                    <td>{{ booking.name }}</td>
-                    <td>{{ booking.area.name }}</td>
-                    <td>{{ booking.est_time_ufa }}</td>
-                    <td>{{ booking.dist_ufa }}</td>
-                    <td>{{ booking.price_addition }}</td>
+                    <td>{{ booking.client_phone }}</td>
+                    <td>
+                        {{ booking.scheduled_route.route.start_area }}
+                        —
+                        {{ booking.scheduled_route.route.finish_area }}
+                    </td>
+                    <td>{{ booking.date }}</td>
+                    <td>{{ booking.scheduled_route.time }}</td>
                     <td>
                         <form method="post" action="booking/delete/{{booking.id}}" class="">
                             {% csrf_token %}

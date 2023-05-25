@@ -76,9 +76,6 @@ class Booking(models.Model):
     finish_city = models.ForeignKey(City, related_name='finishing_bookings',
                                     on_delete=models.CASCADE)
     scheduled_route = models.ForeignKey(ScheduledRoute, related_name='bookings', on_delete=models.PROTECT)
-    total_price = models.PositiveIntegerField(default=1000, validators=[
-        MinValueValidator(100),
-        MaxValueValidator(9999)])
     date = models.DateField(auto_now=False)
     start_address = models.CharField(max_length=250, blank=False)
     finish_address = models.CharField(max_length=250, blank=False)
@@ -89,7 +86,6 @@ class Booking(models.Model):
             'client_name': self.client_name,
             'start_city': self.start_city,
             'finish_city': self.finish_city,
-            'total_price': self.total_price,
             'scheduled_route': self.scheduled_route,
             'date': self.date,
             'start_address': self.start_address,

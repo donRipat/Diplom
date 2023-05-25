@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from ..models import *
 from ..forms import *
+from ..arrangement.new_booking import new_booking_handle
 
 
 def choose(request):
@@ -44,7 +45,7 @@ def add(request, id):
     route = Route.objects.filter(id=id)[0]
     ScheduledRoute.objects.create(
         route=route,
-        time=qd.get('time')
+        time=qd.get('time'),
     )
     return HttpResponseRedirect(f"/route/{id}")
 

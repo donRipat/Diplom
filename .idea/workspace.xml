@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17e0f019-d199-4eba-8e32-04fb3f8ab23b" name="Changes" comment="everything up to adding bookings is finished, almost no flaws found">
-      <change afterPath="$PROJECT_DIR$/taxapp/main/static/main/jquery-3.3.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taxapp/main/static/main/jquery.mask.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taxapp/main/templates/main/bookings.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/taxapp/main/views/bookings.py" afterDir="false" />
+    <list default="true" id="17e0f019-d199-4eba-8e32-04fb3f8ab23b" name="Changes" comment="i don't know how to exclude select choices based on other choice Xo help">
+      <change afterPath="$PROJECT_DIR$/taxapp/main/arrangement/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taxapp/main/arrangement/new_booking.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taxapp/main/migrations/0013_alter_city_est_time_ufa.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/taxapp/main/migrations/0014_remove_booking_total_price.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taxapp/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taxapp/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taxapp/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/templates/main/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/clients.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taxapp/main/views/clients.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/templates/main/bookings.html" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/templates/main/bookings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/views/bookings.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/views/bookings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxapp/main/views/choose_route.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxapp/main/views/choose_route.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -165,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684935831335</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="i don't know how to exclude select choices based on other choice Xo help">
+      <created>1684957130412</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1684957130412</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,6 +194,7 @@
     <MESSAGE value="changed models, templates, forms in order to improve database architecture" />
     <MESSAGE value="something changed don't care + didn't ask &lt;br&gt;schedule routes thing still to be done +_+" />
     <MESSAGE value="everything up to adding bookings is finished, almost no flaws found" />
-    <option name="LAST_COMMIT_MESSAGE" value="everything up to adding bookings is finished, almost no flaws found" />
+    <MESSAGE value="i don't know how to exclude select choices based on other choice Xo help" />
+    <option name="LAST_COMMIT_MESSAGE" value="i don't know how to exclude select choices based on other choice Xo help" />
   </component>
 </project>
