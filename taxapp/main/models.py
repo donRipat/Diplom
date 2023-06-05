@@ -15,7 +15,7 @@ class Area(models.Model):
 
 
 class City(models.Model):
-    name = models.CharField(max_length=100, blank=False)
+    name = models.CharField(max_length=100, blank=False, unique=True)
     area = models.ForeignKey(Area, on_delete=models.CASCADE, related_name='cities')
     est_time_ufa = models.TimeField(auto_now=False)
     dist_ufa = models.PositiveIntegerField(default=0, validators=[
@@ -54,7 +54,7 @@ class Route(models.Model):
 
 
 class ScheduledRoute(models.Model):
-    time = models.TimeField(auto_now=False)
+    time = models.TimeField(auto_now=False, unique=True)
     route = models.ForeignKey(Route, related_name='times',
                               on_delete=models.CASCADE)
 
@@ -97,7 +97,7 @@ class Booking(models.Model):
 
 
 class Driver(models.Model):
-    phone = models.CharField(max_length=20, blank=False)
+    phone = models.CharField(max_length=20, blank=False, unique=True)
     name = models.CharField(max_length=100, blank=False)
 
     def __str__(self):
@@ -109,7 +109,7 @@ class Driver(models.Model):
 
 class Car(models.Model):
     model = models.CharField(max_length=50, blank=False)
-    plate = models.CharField(max_length=15, blank=False)
+    plate = models.CharField(max_length=15, blank=False, unique=True)
     sits = models.PositiveIntegerField(default=5, validators=[
         MinValueValidator(5),
         MaxValueValidator(9)])

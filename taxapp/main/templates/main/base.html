@@ -17,30 +17,34 @@
         <a href="/drives" class="gavno btn p-3">
             Поездки
         </a>
-        <a href="/bookings" class="gavno btn p-3">
+        <a href="/bookings/0" class="gavno btn p-3">
             Заказы
         </a>
         <a href="/choose-route" class="gavno btn p-3 align-center">
             Расписание рейсов
         </a>
-        <a href="/employees" class="gavno btn p-3">
+        <a href="/employees/0" class="gavno btn p-3">
             Водители
         </a>
-        <a href="/cars" class="gavno btn p-3">
+        <a href="/cars/0" class="gavno btn p-3">
             Автомобили
         </a>
-        <a href="/cities" class="btn p-3 gavno">
+        <a href="/cities/0" class="btn p-3 gavno">
             Населенные пункты
         </a>
-        <a href="/routes" class="btn p-3 gavno">
+        <a href="/routes/0" class="btn p-3 gavno">
             Маршруты
         </a>
-        <a href="/areas" class="btn p-3 gavno">
+        <a href="/areas/0" class="btn p-3 gavno">
             Локации маршрутов
         </a>
     </header>
     <main class="py-3 px-5">
         <h4>{{ title }}</h4>
+
+        <div class="text-primary mt-2">
+            {{ info_message }}
+        </div>
 
         {% block content %}
         {% endblock %}

@@ -3,6 +3,9 @@ from django.http import HttpResponseRedirect
 from ..models import *
 from ..forms import *
 from ..arrangement.new_booking import new_booking_handle
+from ..messages import get_info_message
+from django.db import Error
+from django.core.exceptions import ValidationError
 
 
 def choose(request):
@@ -25,7 +28,7 @@ def choose(request):
     return render(request, 'main/choose_route.html', dic)
 
 
-def route_edit(request, id: int):
+def route_edit(request, id: int, mes):
     qd = request.POST
     route = Route.objects.filter(id=id)[0]
     times = route.times.all().order_by('time')
@@ -36,6 +39,7 @@ def route_edit(request, id: int):
         'times': times,
         'title': 'Добавить время для маршрута "' + str(route.start_area) +
                  ' — ' + str(route.finish_area) + '"',
+        'info_message': get_info_message(mes),
     }
     return render(request, 'main/route_time.html', dic)
 
@@ -43,13 +47,21 @@ def route_edit(request, id: int):
 def add(request, id):
     qd = request.POST
     route = Route.objects.filter(id=id)[0]
-    ScheduledRoute.objects.create(
-        route=route,
-        time=qd.get('time'),
-    )
-    return HttpResponseRedirect(f"/route/{id}")
+    try:
+        ScheduledRoute.objects.create(
+            route=route,
+            time=qd.get('time'),
+        )
+        return HttpResponseRedirect(f"/route/{id}/1")
+    except Error:
+        return HttpResponseRedirect(f"/route/{id}/101")
+    except ValidationError:
+        return HttpResponseRedirect(f"/route/{id}/103")
 
 
 def delete(request, r_id: int, t_id: int):
-    ScheduledRoute.objects.filter(id=t_id)[0].delete()
-    return HttpResponseRedirect(f"/route/{r_id}")
+    try:
+        ScheduledRoute.objects.filter(id=t_id)[0].delete()
+        return HttpResponseRedirect(f"/route/{r_id}/2")
+    except:
+        return HttpResponseRedirect(f"/route/{r_id}/102")

@@ -3,6 +3,8 @@ from django import forms
 
 
 rcc = 'mt-3'
+req_mes = 'Необходимо заполнить поле'
+ch_mes = 'Необходимо выбрать элемент из списка'
 
 
 class CarForm(forms.Form):
@@ -78,6 +80,7 @@ class CityForm(forms.Form):
         widget=forms.TimeInput(attrs={
             "class": "form-control",
             'data-mask': '00:00',
+            'placeholder': '00:00'
         }),
     )
     dist_ufa = forms.IntegerField(
