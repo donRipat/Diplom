@@ -3,8 +3,8 @@ from django import forms
 
 
 rcc = 'mt-3'
-req_mes = 'Необходимо заполнить поле'
-ch_mes = 'Необходимо выбрать элемент из списка'
+req_mes = 'Необходимо заполнить поле.'
+ch_mes = 'Необходимо выбрать элемент из списка.'
 
 
 class CarForm(forms.Form):
@@ -14,6 +14,8 @@ class CarForm(forms.Form):
         widget=forms.TextInput(attrs={
             "class": "form-control",
             'placeholder': 'Белый Renault Logan',
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
     )
     plate = forms.CharField(
@@ -22,6 +24,8 @@ class CarForm(forms.Form):
         widget=forms.TextInput(attrs={
             "class": "form-control",
             'placeholder': 'X000XX 702 rus',
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
     )
     sits = forms.IntegerField(
@@ -31,6 +35,8 @@ class CarForm(forms.Form):
         min_value=2,
         widget=forms.NumberInput(attrs={
             "class": "form-control",
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
     )
     required_css_class = rcc
@@ -47,6 +53,8 @@ class DriverForm(forms.Form):
         widget=forms.TextInput(attrs={
             "class": "form-control",
             'placeholder': 'Иванов Иван Иванович',
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
     )
     phone = forms.CharField(
@@ -56,6 +64,8 @@ class DriverForm(forms.Form):
             "class": "form-control",
             'data-mask': '+0 (000) 000-00-00',
             'placeholder': '+0 (000) 000-00-00',
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
     )
     required_css_class = rcc
@@ -66,12 +76,19 @@ class DriverForm(forms.Form):
 
 
 class CityForm(forms.Form):
-    name = forms.CharField(label='Название', max_length=100,
-                           widget=forms.TextInput(attrs={"class": "form-control"}))
+    name = forms.CharField(
+        label='Название', max_length=100,
+        widget=forms.TextInput(attrs={
+            "class": "form-control",
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
+        }))
     area = forms.ModelChoiceField(
         label='Локация',
         widget=forms.Select(attrs={
             "class": "form-control",
+            'oninvalid': f"setCustomValidity('{ch_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
         queryset=Area.objects.all().order_by('name')
     )
@@ -80,7 +97,9 @@ class CityForm(forms.Form):
         widget=forms.TimeInput(attrs={
             "class": "form-control",
             'data-mask': '00:00',
-            'placeholder': '00:00'
+            'placeholder': '00:00',
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
     )
     dist_ufa = forms.IntegerField(
@@ -89,7 +108,9 @@ class CityForm(forms.Form):
         min_value=0,
         max_value=999,
         widget=forms.NumberInput(attrs={
-            "class": "form-control"
+            "class": "form-control",
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
     )
     price_addition = forms.IntegerField(
@@ -99,7 +120,9 @@ class CityForm(forms.Form):
         min_value=0,
         max_value=999,
         widget=forms.NumberInput(attrs={
-            "class": "form-control"
+            "class": "form-control",
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
     )
     required_css_class = rcc
@@ -114,6 +137,8 @@ class RouteForm(forms.Form):
         label='Начало',
         widget=forms.Select(attrs={
             "class": "form-control",
+            'oninvalid': f"setCustomValidity('{ch_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
         queryset=Area.objects.all().order_by('name')
     )
@@ -121,6 +146,8 @@ class RouteForm(forms.Form):
         label='Конец',
         widget=forms.Select(attrs={
             "class": "form-control",
+            'oninvalid': f"setCustomValidity('{ch_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
         queryset=Area.objects.all().order_by('name')
     )
@@ -132,6 +159,8 @@ class RouteForm(forms.Form):
         max_value=9999,
         widget=forms.NumberInput(attrs={
             "class": "form-control mb-3",
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
         }),)
     no_reverse_route = forms.BooleanField(
         label='Не добавлять обратный маршрут',
@@ -154,6 +183,8 @@ class AreaForm(forms.Form):
         max_length=50,
         widget=forms.TextInput(attrs={
             "class": "form-control",
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
     )
     required_css_class = rcc
@@ -168,6 +199,8 @@ class RouteChoosingForm(forms.Form):
         label='Маршрут',
         widget=forms.Select(attrs={
             "class": "form-control",
+            'oninvalid': f"setCustomValidity('{ch_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
         queryset=Route.objects.all().order_by('start_area')
     )
@@ -185,6 +218,8 @@ class TimeAddingForm(forms.Form):
             "class": "form-control",
             'data-mask': '00:00',
             'placeholder': '00:00',
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
     )
     required_css_class = rcc
@@ -202,6 +237,8 @@ class BookingForm(forms.Form):
             "class": "form-control",
             'data-mask': '+0 (000) 000-00-00',
             'placeholder': '+0 (000) 000-00-00',
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
         })
     )
     client_name = forms.CharField(
@@ -217,6 +254,8 @@ class BookingForm(forms.Form):
         label='Пункт отправления',
         widget=forms.Select(attrs={
             "class": "form-control",
+            'oninvalid': f"setCustomValidity('{ch_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
         queryset=City.objects.all().order_by('name')
     )
@@ -224,6 +263,8 @@ class BookingForm(forms.Form):
         label='Пункт прибытия',
         widget=forms.Select(attrs={
             "class": "form-control",
+            'oninvalid': f"setCustomValidity('{ch_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
         queryset=City.objects.all().order_by('name')
     )
@@ -233,12 +274,16 @@ class BookingForm(forms.Form):
             "class": "form-control",
             'data-mask': '00.00.0000',
             'placeholder': '01.01.2000',
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
     )
     scheduled_route = forms.ModelChoiceField(
         label='Время',
         widget=forms.Select(attrs={
             "class": "form-control",
+            'oninvalid': f"setCustomValidity('{ch_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
         queryset=ScheduledRoute.objects.all(),
     )
@@ -247,6 +292,8 @@ class BookingForm(forms.Form):
         max_length=100,
         widget=forms.TextInput(attrs={
             'class': 'form-control',
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
     )
     finish_address = forms.CharField(
@@ -254,6 +301,8 @@ class BookingForm(forms.Form):
         max_length=100,
         widget=forms.TextInput(attrs={
             'class': 'form-control',
+            'oninvalid': f"setCustomValidity('{req_mes}')",
+            'oninput': "setCustomValidity('')",
         }),
     )
     required_css_class = rcc
